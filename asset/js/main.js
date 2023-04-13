@@ -8,6 +8,7 @@ fetch(topstorie)
 })
 .then(lista => {
     console.log(lista) // chiamo un console log per controllare che stia procedendo tutto e che sia creato l'Array con 500 risultati
+    if(lista === null || undefined){risultati.innerHTML = `Qualcosa è andato storto nel caricamento delle News`} //predispongo un if per il controllo del maxi array
     let topTEN = lista.slice(0, 10); //con slice richiamo la porzione di Array che mi interessa
     let fetchPromises = topTEN.map(idArticolo => {
         return fetch(`https://hacker-news.firebaseio.com/v0/item/${idArticolo}.json?print=pretty`) //carico l'URL riferito al JSON del singolo articolo
@@ -24,4 +25,8 @@ fetch(topstorie)
             risultati.innerHTML += `<strong>ID Articolo:</strong> ${articolo.id} <strong>Titolo:</strong> ${articolo.title} <strong><br>Link articolo:</strong> <a href="${articolo.url}" target="_blank">Link</a><br><br>`;
         })
     })
+})
+.catch(errore => {
+    risultati.innerHTML = `Qualcosa è andato storto nel caricamento delle news`
+    console.error(errore);
 });
