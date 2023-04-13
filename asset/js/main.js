@@ -1,5 +1,6 @@
 let topstorie = `https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty`
 let risultati = document.getElementById(`risultati`);
+let loading = document.getElementById(`loading`);
 
 fetch(topstorie)
 .then(risposta => {
@@ -19,6 +20,7 @@ fetch(topstorie)
     .then(articoli => {
         console.log(articoli) //controllo l'Array
         articoli.forEach(articolo => { //forEach itera l'array prendendo oggetto per oggetto e poi con la funzione stampo i risultati sull'HTML
+            loading.remove();
             risultati.innerHTML += `<strong>ID Articolo:</strong> ${articolo.id} <strong>Titolo:</strong> ${articolo.title} <strong><br>Link articolo:</strong> <a href="${articolo.url}">Link</a><br><br>`;
         })
     })
