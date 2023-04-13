@@ -21,7 +21,7 @@ fetch(topstorie)
         console.log(articoli) //controllo l'Array
         articoli.forEach(articolo => { //forEach itera l'array prendendo oggetto per oggetto e poi con la funzione stampo i risultati sull'HTML
             loading.remove();
-            risultati.innerHTML += `<strong>ID Articolo:</strong> ${articolo.id} <strong>Titolo:</strong> ${articolo.title} <strong><br>Link articolo:</strong> <a href="${articolo.url}">Link</a><br><br>`;
+            risultati.innerHTML += `<strong>ID Articolo:</strong> ${articolo.id} <strong>Titolo:</strong> ${articolo.title} <strong><br>Link articolo:</strong> <a href="${articolo.url}" target="_blank">Link</a><br><br>`;
         })
     })
 });
