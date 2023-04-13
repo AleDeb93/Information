@@ -75,6 +75,9 @@ main{
     text-align: center;
     padding: 100px;
 }
+#loading{
+    width: 200px;
+}
 
 /*FORMATTAZIONE FOOTER*/
 footer{
