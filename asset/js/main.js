@@ -1,32 +1,49 @@
-let topstorie = `https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty`
+let api = `https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty`;
 let risultati = document.getElementById(`risultati`);
 let loading = document.getElementById(`loading`);
+let button = document.getElementById(`carica`)
+// let lista = [];
+let index = 0;
 
-fetch(topstorie)
-.then(risposta => {
-    return risposta.json()
-})
-.then(lista => {
-    console.log(lista) // chiamo un console log per controllare che stia procedendo tutto e che sia creato l'Array con 500 risultati
-    if(lista === null || undefined){risultati.innerHTML = `Qualcosa è andato storto nel caricamento delle News`} //predispongo un if per il controllo del maxi array
-    let topTEN = lista.slice(0, 10); //con slice richiamo la porzione di Array che mi interessa
-    let fetchPromises = topTEN.map(idArticolo => {
-        return fetch(`https://hacker-news.firebaseio.com/v0/item/${idArticolo}.json?print=pretty`) //carico l'URL riferito al JSON del singolo articolo
-        .then(risposta => {
-            return risposta.json()
-        });
-    });
+function caricaNews() {
+    fetch(api)
+    .then(risposta => {
+        return risposta.json()
+    })
+    // .then(data => lista = data)
+    .then(lista => {
+        // console.log(lista)
+        let tenNews = lista.slice(index,index+10);
+        let fetchPromises = tenNews.map(idNews => {
+            return fetch(`https://hacker-news.firebaseio.com/v0/item/${idNews}.json?print=pretty`)
+            .then(risposta => {
+                return risposta.json();
+            })
+        })
+        // lista.splice(0,10);
+        // console.log(lista);
 
-    Promise.all(fetchPromises) //con Promise.all itero le 10 promise in un unico risultato che crea un Array con 10 oggetti
-    .then(articoli => {
-        console.log(articoli) //controllo l'Array
-        articoli.forEach(articolo => { //forEach itera l'array prendendo oggetto per oggetto e poi con la funzione stampo i risultati sull'HTML
-            loading.remove();
-            risultati.innerHTML += `<strong>ID Articolo:</strong> ${articolo.id} <strong>Titolo:</strong> ${articolo.title} <strong><br>Link articolo:</strong> <a href="${articolo.url}" target="_blank">Link</a><br><br>`;
+        Promise.all(fetchPromises)
+        .then(articoli => {
+            // console.log(articoli)
+            if(articoli.length === 0){
+                risultati.innerHTML += `Nessun altro risultato diponibile`;
+                button.remove()
+            } else {
+                articoli.forEach(articolo => {
+                    loading.remove();
+                    risultati.innerHTML += `<strong>Titolo:</strong> ${articolo.title} <strong><br>Data articolo:</strong> ${articolo.time} <strong>Link articolo:</strong> <a href="${articolo.url}" target="_blank">Link</a><br><br>`                
+                })
+                index += 10;
+            }
+        })
+        .catch(e => {
+            risultati.innerHTML += `Qualcosa è andato storto nel caricamento dei dati <br>Controlla la console!`;
+            console.error(e);
         })
     })
-})
-.catch(errore => {
-    risultati.innerHTML = `Qualcosa è andato storto nel caricamento delle news`
-    console.error(errore);
-});
+}
+
+
+caricaNews()
+button.addEventListener(`click`, caricaNews)
