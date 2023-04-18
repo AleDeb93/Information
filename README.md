@@ -1,5 +1,11 @@
 # Information
 Il progetto prevede la creazione di un applicazione in grado di collegarsi con gli API di HackerNews (in particolare il servizio collegato è quello delle _New, Top and Best Stories_) e successivamente mostrare a schermo i primi 10 risultati per non affaticare troppo il caricamento della pagina.
+In particolare il funzionamento è il seguente:
+1. Viene chiamato il json contenente i 500 ID e viene processato
+2. Tramite i metodi slice e map in "collaborazione" con il contatore index vengono selezionati i primi 10 ID
+3. Viene effettuata una seconda chiamata ai 10 link corrispondenti ai 10 ID recuperatie e processati
+4. A questo punto vengono iterati gli articoli con forEach e vengono restituiti a schermo i dati che ci interessano per ogni articolo 
+5. Terminata la chiamata e stampati i risultati viene aggiornato incrementato il contatore di 10
   
 Al termine della chiamata a schermo vengono visualizzati titolo, data e link all'articolo!
   
