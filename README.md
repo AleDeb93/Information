@@ -1,5 +1,6 @@
 # Information
 Il progetto prevede la creazione di un applicazione in grado di collegarsi con gli API di HackerNews (in particolare il servizio collegato è quello delle _New, Top and Best Stories_) e successivamente mostrare a schermo i primi 10 risultati per non affaticare troppo il caricamento della pagina.
+ 
 In particolare il funzionamento è il seguente:
 1. Viene chiamato il JSON contenente i 500 ID e viene processato
 2. Tramite i metodi slice e map in "collaborazione" con il contatore index vengono selezionati i primi 10 ID
@@ -11,8 +12,9 @@ Al termine della chiamata a schermo vengono visualizzati titolo, data e link all
   
 ![image](https://user-images.githubusercontent.com/121309726/232818999-d2603805-29fe-401e-aa04-a5da0cba9266.png)
   
-Tramite apposito pulsante è possibile caricare altri 10 risultati, e cosi via, fino al termine dei 500 risultati ottenuti con la prima chiamata. 
+Tramite apposito pulsante è possibile caricare altri 10 risultati, e cosi via, fino al termine dei 500 risultati ottenuti con la prima chiamata.
+ 
 Il funzionamento del bottone è molto semplice, esso richiama nuovamente la funzione di caricamento delle news, ma, grazie al contatore idex esterno alla funzione citato in precedenza, saranno caricati i 10 articoli successivi a quelli già richiamata, questo perchè index viene incrementato ad ogni chiamata e ci permette di scorrere l'array lista di 10 in 10. 
-
+ 
 Il progetto è stato svolto come test pratico per il corso di JavaScript Advanced di Start2Impact University
 L'applicazione è stata deployata sul web host gratuito netlify ed è visitabile al link: https://s2i-information.netlify.app/
