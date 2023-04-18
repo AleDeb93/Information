@@ -14,7 +14,9 @@ Al termine della chiamata a schermo vengono visualizzati titolo, data e link all
   
 Tramite apposito pulsante è possibile caricare altri 10 risultati, e cosi via, fino al termine dei 500 risultati ottenuti con la prima chiamata.
  
+ 
 Il funzionamento del bottone è molto semplice, esso richiama nuovamente la funzione di caricamento delle news, ma, grazie al contatore idex esterno alla funzione citato in precedenza, saranno caricati i 10 articoli successivi a quelli già richiamata, questo perchè index viene incrementato ad ogni chiamata e ci permette di scorrere l'array lista di 10 in 10. 
  
+   
 Il progetto è stato svolto come test pratico per il corso di JavaScript Advanced di Start2Impact University
 L'applicazione è stata deployata sul web host gratuito netlify ed è visitabile al link: https://s2i-information.netlify.app/
