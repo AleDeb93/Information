@@ -11,7 +11,7 @@ Al termine della chiamata a schermo vengono visualizzati titolo, data e link all
   
 ![image](https://user-images.githubusercontent.com/121309726/232818999-d2603805-29fe-401e-aa04-a5da0cba9266.png)
   
-
+# La seconda chiamata
 Tramite apposito pulsante è possibile caricare altri 10 risultati, e cosi via, fino al termine dei 500 risultati ottenuti con la prima chiamata. 
 Il funzionamento del bottone è molto semplice, esso richiama nuovamente la funzione di caricamento delle news, ma, grazie al contatore idex esterno alla funzione citato in precedenza, saranno caricati i 10 articoli successivi a quelli già richiamata, questo perchè index viene incrementato ad ogni chiamata e ci permette di scorrere l'array lista di 10 in 10. 
 
