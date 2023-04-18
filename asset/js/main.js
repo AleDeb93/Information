@@ -2,6 +2,7 @@ let api = `https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty`;
 let risultati = document.getElementById(`risultati`);
 let loading = document.getElementById(`loading`);
 let button = document.getElementById(`carica`)
+// let lista = [];
 let index = 0;
 
 function caricaNews() {
@@ -19,15 +20,18 @@ function caricaNews() {
                 return risposta.json();
             })
         })
+        // lista.splice(0,10);
+        // console.log(lista);
 
         Promise.all(fetchPromises)
         .then(articoli => {
+            // console.log(articoli)
             if(articoli.length === 0){
                 risultati.innerHTML += `Nessun altro risultato diponibile`;
                 button.remove()
             } else {
                 articoli.forEach(articolo => {
-                    let data = new Date(articolo.time*1000).toLocalDateString();
+                    const data = new Date(articolo.time*1000).toLocaleDateString();
                     loading.remove();
                     risultati.innerHTML += `<strong>Titolo:</strong> ${articolo.title} <strong><br>Data articolo:</strong> ${data} <strong>Link articolo:</strong> <a href="${articolo.url}" target="_blank">Link</a><br><br>`                
                 })
@@ -40,6 +44,7 @@ function caricaNews() {
         })
     })
 }
+
 
 caricaNews()
 button.addEventListener(`click`, caricaNews)
