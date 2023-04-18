@@ -5,6 +5,9 @@
     margin: 0;
     padding: 0;
 }
+html{
+    scroll-behavior: smooth;
+}
 h3{
     font-size: x-large;
 }
@@ -51,7 +54,7 @@ header{
     width: 100%;
     justify-content: space-around;
     align-items: center;
-    height: 100px;
+    height: 80px;
     background-color: #f18701;
 }
 header > a > img{
@@ -74,9 +77,6 @@ main{
     /* min-height: 100vh; */
     text-align: center;
     padding: 100px;
-}
-#loading{
-    width: 200px;
 }
 
 /*FORMATTAZIONE FOOTER*/
