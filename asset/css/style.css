@@ -5,9 +5,6 @@
     margin: 0;
     padding: 0;
 }
-html{
-    scroll-behavior: smooth;
-}
 h3{
     font-size: x-large;
 }
@@ -21,6 +18,7 @@ a:hover{
 a:visited{
     color: black;
 }
+
 /*SEPARATORI*/
 .xl{
     height: 120px;
@@ -30,7 +28,9 @@ a:visited{
 }
 .m{
     height: 70px;
-}
+} 
+
+/*BOTTONI*/
 button{
     cursor: pointer;
     border-radius: 50%;
@@ -54,7 +54,7 @@ header{
     width: 100%;
     justify-content: space-around;
     align-items: center;
-    height: 80px;
+    height: 100px;
     background-color: #f18701;
 }
 header > a > img{
@@ -77,6 +77,36 @@ main{
     /* min-height: 100vh; */
     text-align: center;
     padding: 100px;
+}
+.caricamento{
+    font-size: x-large;
+    font-weight: 700;
+}
+#faq{
+    width: 600px;
+    margin: 100px auto;
+    background: lightgrey;
+    border-radius: 10px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: left;
+}
+#faq > h3{
+    background-color: #f18701;
+    text-align: center;
+}
+details{
+    padding: 10px 20px;
+    font-weight: 600;
+}
+details:hover{
+    cursor: pointer;
+}
+details > p{
+    padding: 5px 10px;
+    font-weight: normal;
+}
+details > p:hover{
+    cursor: default;
 }
 
 /*FORMATTAZIONE FOOTER*/
