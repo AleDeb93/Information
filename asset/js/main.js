@@ -1,6 +1,5 @@
 let api = `https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty`;
 let ricerca = document.getElementById(`ricerca`);
-let button = document.getElementById(`carica`)
 let index = 0;
 
 function creaElemento(tagName, className, innerHTML){
@@ -12,6 +11,9 @@ function creaElemento(tagName, className, innerHTML){
   }
   return elemento;
 }
+
+const button = creaElemento(`button`, `carica`, `Carica altre news`);
+document.getElementById(`caricaaltro`).appendChild(button);
 
 function hackerNews() {
   const caricamento = creaElemento(`p`, `caricamento`, `Carico i risultati...<br><br>`);
@@ -54,3 +56,6 @@ function hackerNews() {
 
 hackerNews()
 button.addEventListener(`click`, hackerNews)
+
+const progetto = creaElemento(`p`, null, `Il progetto prevede lo sviluppo di un applicazione per democratizzare la diffusione di informazioni in ambito tech attraverso l'utilizzo del servizio Hacker News.`)
+document.getElementById(`about`).appendChild(progetto)
