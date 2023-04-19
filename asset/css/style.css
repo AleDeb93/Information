@@ -5,9 +5,6 @@
     margin: 0;
     padding: 0;
 }
-html{
-    scroll-behavior: smooth;
-}
 h3{
     font-size: x-large;
 }
@@ -20,6 +17,9 @@ a:hover{
 }
 a:visited{
     color: black;
+}
+html{
+    scroll-behavior: smooth;
 }
 
 /*SEPARATORI*/
