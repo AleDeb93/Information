@@ -1,9 +1,21 @@
 let api = `https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty`;
-let risultati = document.getElementById(`risultati`);
+let ricerca = document.getElementById(`ricerca`);
 let button = document.getElementById(`carica`)
 let index = 0;
 
+function creaElemento(tagName, className, innerHTML){
+  const elemento = document.createElement(tagName);
+  if(className){
+    elemento.className = className;
+  } if (innerHTML){
+    elemento.innerHTML += innerHTML;
+  }
+  return elemento;
+}
+
 function hackerNews() {
+  const caricamento = creaElemento(`p`, `caricamento`, `Carico i risultati...<br><br>`);
+  ricerca.appendChild(caricamento);
     fetch(api)
     .then(risposta => {
         return risposta.json()
@@ -25,12 +37,15 @@ function hackerNews() {
             } else {
                 articoli.forEach(articolo => {
                     const data = new Date(articolo.time*1000).toLocaleDateString();
-                    risultati.innerHTML += `<strong>Titolo:</strong> ${articolo.title} <strong><br>Data articolo:</strong> ${data} <strong>Link articolo:</strong> <a href="${articolo.url}" target="_blank">Link</a><br><br>`                
+                    caricamento.innerHTML = ` `;
+                    const risultati = creaElemento(`div`, `risultati`, `<strong>Titolo:</strong> ${articolo.title} <strong><br>Data articolo:</strong> ${data} <strong>Link articolo:</strong> <a href="${articolo.url}" target="_blank">Link</a><br><br>`);
+                    ricerca.appendChild(risultati)                
                 })
                 index += 10;
             }
         })
         .catch(e => {
+            caricamento.innerHTML = ` `;
             risultati.innerHTML += `Qualcosa è andato storto nel caricamento dei dati <br>Controlla la console!`;
             console.error(e);
         })
